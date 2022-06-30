@@ -25,18 +25,26 @@ export default function App() {
     }
 
     function deleteAll() {
-        Alert.alert("Hold up", "Are you sure you want to delete all goals?", [
-            {
-                text: "No",
-            },
-            {
-                text: "Yes",
-                onPress: () => {
-                    setGoalList([]);
-                    Vibration.vibrate(300);
-                },
-            },
-        ]);
+        if (goalList) {
+            Alert.alert(
+                "Hold up",
+                "Are you sure you want to delete all goals?",
+                [
+                    {
+                        text: "No",
+                    },
+                    {
+                        text: "Yes",
+                        onPress: () => {
+                            setGoalList([]);
+                            Vibration.vibrate(300);
+                        },
+                    },
+                ]
+            );
+        } else {
+            Alert.alert("Oops", "You cannot delete from an empty list!!");
+        }
     }
 
     return (
